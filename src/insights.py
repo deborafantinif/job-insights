@@ -3,10 +3,11 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     jobs_array = read(path)
-    type_of_jobs = []
+    type_of_jobs = set()
     for job in jobs_array:
-        type_of_jobs.append(job["type"])
-    return type_of_jobs
+        type_of_jobs.add(job["job_type"])
+    type_of_jobs_array = [job for job in type_of_jobs]
+    return type_of_jobs_array
 
 
 def filter_by_job_type(jobs, job_type):
