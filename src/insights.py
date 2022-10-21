@@ -62,26 +62,16 @@ def get_max_salary(path):
     for job in jobs_array:
         if job["max_salary"] != "" and not job["max_salary"].isalpha():
             salaries.add(int(job["max_salary"]))
-    salary_array = [job for job in salaries]
-    return max(salary_array)
+    return max(salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    jobs_array = read(path)
+    salaries = set()
+    for job in jobs_array:
+        if job["min_salary"] != "" and not job["min_salary"].isalpha():
+            salaries.add(int(job["min_salary"]))
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
